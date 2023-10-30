@@ -1,0 +1,231 @@
+:root {
+  --sun-diameter: 4rem;
+  --mercury-diameter: 0.7rem;
+  --mercury-orbit: 8rem;
+  --venus-diameter: 0.75rem;
+  --venus-orbit: 10rem;
+  --earth-diameter: 1rem;
+  --earth-orbit: 14rem;
+  --mars-diameter: 1rem;
+  --mars-orbit: 18rem;
+  --asteroid-belt-orbit: 24rem;
+}
+
+.space {
+  position: fixed;
+  background: black;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.solar-system {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.sun {
+  position: relative;
+  background: yellow;
+  width: var(--sun-diameter);
+  height: var(--sun-diameter);
+  margin: auto;
+  top: 50%;
+  border-radius: 2rem;
+  animation: pulse 15s linear infinite;
+  z-index: 12;
+}
+
+.sun:hover::after {
+  position: relative;
+  content: "sun";
+  color: orange;
+  font-size: 20px;
+  top: 1.15rem;
+  left: 1.15rem;
+}
+
+.planet {
+  position: absolute;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+  border-width: 1px 1px 0 0;
+  border-radius: 50%;
+}
+
+.planet:hover {
+  border-color: white;
+  border-width: 2px;
+}
+
+.planet::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.planet::after {
+  display: block;
+  position: relative;
+  margin-top: -0.25rem;
+  margin-right: -0.25rem;
+  rotate: 5deg;
+}
+
+.mercury {
+  top: calc(var(--mercury-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--mercury-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--mercury-orbit);
+  height: var(--mercury-orbit);
+  border-color: #88807b transparent transparent transparent;
+  animation: orbit 5s linear infinite;
+  text-align: right;
+  z-index: 10;
+}
+
+.mercury::before {
+  background-color: #787276;
+  width: var(--mercury-diameter);
+  height: var(--mercury-diameter);
+  top: calc(var(--mercury-orbit) * 0.108);
+  left: calc(var(--mercury-orbit) * 0.8538 - var(--mercury-diameter) / 2);
+}
+
+.mercury:hover::after {
+  content: "mercury";
+  color: gray;
+}
+
+.venus {
+  top: calc(var(--venus-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--venus-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--venus-orbit);
+  height: var(--venus-orbit);
+  border-color: #eecb8b transparent transparent transparent;
+  animation: orbit 7s linear infinite;
+  text-align: right;
+  z-index: 9;
+}
+
+.venus::before {
+  background-color: #d3a567;
+  width: var(--venus-diameter);
+  height: var(--venus-diameter);
+  top: calc(var(--venus-orbit) * 0.108);
+  left: calc(var(--venus-orbit) * 0.8538 - var(--venus-diameter) / 2);
+}
+
+.venus:hover::after {
+  content: "venus";
+  color: #eecb8b;
+}
+
+.earth {
+  top: calc(var(--earth-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--earth-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--earth-orbit);
+  height: var(--earth-orbit);
+  border-color: #87ceeb transparent white white;
+  animation: orbit 10s linear infinite;
+  text-align: right;
+  z-index: 8;
+}
+
+.earth::before {
+  background: linear-gradient(to right, #82f241, #33bb93);
+  width: var(--earth-diameter);
+  height: var(--earth-diameter);
+  top: calc(var(--earth-orbit) * 0.108);
+  left: calc(var(--earth-orbit) * 0.8538 - var(--earth-diameter) / 2);
+  box-shadow: 0 0 1rem #87ceeb;
+}
+
+.earth:hover::after {
+  content: "earth";
+  color: #87ceeb;
+  margin-top: 0;
+  margin-right: 0.35rem;
+}
+
+.mars {
+  top: calc(var(--mars-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--mars-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--mars-orbit);
+  height: var(--mars-orbit);
+  border-color: #451804 transparent white white;
+  animation: orbit 12s linear infinite;
+  text-align: right;
+  z-index: 7;
+}
+
+.mars::before {
+  background: #c1440e;
+  width: var(--mars-diameter);
+  height: var(--mars-diameter);
+  top: calc(var(--mars-orbit) * 0.108);
+  left: calc(var(--mars-orbit) * 0.8538 - var(--mars-diameter) / 2);
+  box-shadow: 0 0 1rem #e77d11;
+}
+
+.mars:hover::after {
+  content: "mars";
+  color: #c1440e;
+  margin-top: 0;
+  margin-right: 0.35rem;
+}
+
+.asteroid-belt {
+  position: relative;
+  top: calc(var(--asteroid-belt-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--asteroid-belt-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--asteroid-belt-orbit);
+  height: var(--asteroid-belt-orbit);
+  box-shadow: 0 0 3rem rgb(118 40 40 / 0.2) inset, 0 0 3rem rgb(118 40 40 / 0.2);
+  border-radius: 50%;
+  z-index: 6;
+  display: flex;
+  justify-content: center;
+}
+
+.asteroid-belt:hover::after {
+  content: "asteroid belt";
+  font-size: 20px;
+  color: brown;
+  display: flex;
+}
+
+.rock {
+  background: brown;
+  border-radius: 50%;
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 3rem orange;
+  }
+
+  33% {
+    box-shadow: 0 0 1rem #ff7900;
+  }
+
+  67% {
+    box-shadow: 0 0 2rem #f4c430;
+  }
+
+  100% {
+    box-shadow: 0 0 3rem orange;
+  }
+}
