@@ -15,6 +15,8 @@
   --deimos-orbit: 2em;
   --phobos-diameter: 0.25rem;
   --phobos-orbit: 1.5rem;
+  --jupiter-diameter: 2rem;
+  --jupiter-orbit: 30rem;
 }
 
 html * {
@@ -234,8 +236,8 @@ html * {
 .phobos:hover::after {
   content: "phobos";
   color: #c2b5a8;
-  margin-top: -1.5rem;
-  margin-right: 0.35rem;
+  margin-top: -2rem;
+  margin-right: -3.5rem;
 }
 
 .deimos{
@@ -263,7 +265,7 @@ html * {
   content: "deimos";
   color: #8c7d70;
   margin-top: -1.5rem;
-  margin-right: 0.35rem;
+  margin-right: -3.5rem;
 }
 
 
@@ -337,6 +339,35 @@ html * {
   height: 100%;
   animation: orbit 60s linear infinite;
   position: absolute;
+}
+
+.jupiter {
+  top: calc(var(--jupiter-orbit) / -2 - var(--jupiter-diameter) / -2);
+  left: calc(var(--jupiter-orbit) / -2 - var(--jupiter-diameter) / -2);
+  width: var(--jupiter-orbit);
+  height: var(--jupiter-orbit);
+  border-color: rgb(165,145,134) transparent white white;
+  animation: orbit 25s linear infinite;
+  text-align: right;
+  filter: blur(1px);
+  z-index: 6;
+}
+
+.jupiter::before {
+  background: rgb(165,145,134);
+  background: linear-gradient(90deg, rgba(165,145,134,1) 0%, rgba(216,202,157,1) 18%, rgba(235,243,246,1) 29%, rgba(216,202,157,1) 41%, rgba(201,144,57,1) 54%, rgba(227,220,203,1) 72%, rgba(165,145,134,1) 97%);
+  width: var(--jupiter-diameter);
+  height: var(--jupiter-diameter);
+  top: calc(var(--jupiter-orbit) * 0.108);
+  left: calc(var(--jupiter-orbit) * 0.8538 - var(--jupiter-diameter) / 2);
+  box-shadow: 0 0 0.5rem #e77d11;
+}
+
+.jupiter:hover::after {
+  content: "jupiter";
+  color: rgb(165,145,134);
+  margin-top: 0;
+  margin-right: 0.35rem;
 }
 
 @keyframes orbit {
