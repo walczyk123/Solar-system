@@ -11,6 +11,10 @@
   --mars-diameter: 1rem;
   --mars-orbit: 18rem;
   --asteroid-belt-orbit: 24rem;
+  --deimos-diameter: 0.3rem;
+  --deimos-orbit: 2em;
+  --phobos-diameter: 0.25rem;
+  --phobos-orbit: 1.5rem;
 }
 
 html * {
@@ -49,7 +53,7 @@ html * {
   z-index: 12;
 }
 
-.planet {
+.planet, .satelite {
   position: absolute;
   border-style: solid;
   border-color: white transparent transparent transparent;
@@ -57,12 +61,12 @@ html * {
   border-radius: 50%;
 }
 
-.planet:hover {
+.planet:hover, .satelite:hover {
   border-color: white;
   border-width: 2px;
 }
 
-.planet::before {
+.planet::before, .satelite::before{
   content: "";
   position: absolute;
   border-radius: 50%;
@@ -179,8 +183,6 @@ html * {
   margin-right: 0.35rem;
 }
 
-
-
 .mars {
   top: calc(var(--mars-orbit) / -2 - var(--sun-diameter) / -2);
   left: calc(var(--mars-orbit) / -2 - var(--sun-diameter) / -2);
@@ -203,10 +205,67 @@ html * {
 
 .mars:hover::after {
   content: "mars";
-  color: #c1440e;
+  color: #c2b5a8;
   margin-top: 0;
   margin-right: 0.35rem;
 }
+
+.phobos{
+  top: calc(var(--mars-orbit) * 0.108 - var(--phobos-orbit) / 2 + var(--mars-diameter) /2.5);
+  left: calc(var(--mars-orbit) * 0.8538 - var(--phobos-orbit) /2 - var(--mars-diameter)/8);
+  width: var(--phobos-orbit);
+  height: var(--phobos-orbit);
+  border-color: #c2b5a8 transparent transparent transparent;
+  animation: orbit 6s linear infinite;
+  text-align: right;
+  z-index: 10;
+  position: relative;
+}
+
+.phobos::before {
+  background: #c2b5a8;
+  width: var(--phobos-diameter);
+  height: var(--phobos-diameter);
+  top: calc(var(--phobos-orbit) * 0.108 - var(--phobos-diameter) / 2);
+  left: calc(var(--phobos-orbit) * 0.8538 - var(--phobos-diameter) / 2);
+  box-shadow: 0 0 1rem gainsboro;
+}
+
+.phobos:hover::after {
+  content: "phobos";
+  color: #c2b5a8;
+  margin-top: -1.5rem;
+  margin-right: 0.35rem;
+}
+
+.deimos{
+  top: calc(var(--mars-orbit) * -0.105 + var(--deimos-orbit)/2 + var(--phobos-orbit)/2);
+  left: calc(var(--mars-orbit) * 0.8538 - var(--deimos-orbit) /2);
+  width: var(--deimos-orbit);
+  height: var(--deimos-orbit);
+  border-color: #8c7d70 transparent transparent transparent;
+  animation: orbit 7s linear infinite;
+  text-align: right;
+  z-index: 9;
+  position: relative;
+}
+
+.deimos::before {
+  background: #8c7d70;
+  width: var(--deimos-diameter);
+  height: var(--deimos-diameter);
+  top: calc(var(--deimos-orbit) * 0.108 - var(--deimos-diameter) / 2);
+  left: calc(var(--deimos-orbit) * 0.8538 - var(--deimos-diameter) / 2);
+  box-shadow: 0 0 1rem gainsboro;
+}
+
+.deimos:hover::after {
+  content: "deimos";
+  color: #8c7d70;
+  margin-top: -1.5rem;
+  margin-right: 0.35rem;
+}
+
 
 .asteroid-belt {
   position: relative;
