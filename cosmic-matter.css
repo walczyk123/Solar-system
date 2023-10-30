@@ -6,9 +6,15 @@
   --venus-orbit: 10rem;
   --earth-diameter: 1rem;
   --earth-orbit: 14rem;
+  --moon-diameter: 0.5rem;
+  --moon-orbit: 2rem;
   --mars-diameter: 1rem;
   --mars-orbit: 18rem;
   --asteroid-belt-orbit: 24rem;
+}
+
+html * {
+  font-family: Arial !important;
 }
 
 .space {
@@ -41,15 +47,6 @@
   border-radius: 2rem;
   animation: pulse 15s linear infinite;
   z-index: 12;
-}
-
-.sun:hover::after {
-  position: relative;
-  content: "sun";
-  color: orange;
-  font-size: 20px;
-  top: 1.15rem;
-  left: 1.15rem;
 }
 
 .planet {
@@ -154,6 +151,36 @@
   margin-right: 0.35rem;
 }
 
+.moon{
+  top: calc(var(--earth-orbit) * 0.108 - var(--moon-orbit)/2 + var(--moon-diameter)/2 + var(--earth-diameter)/8);
+  left: calc(var(--earth-orbit) * 0.8538 - var(--moon-orbit)/2 - var(--earth-diameter)/8);
+  width: var(--moon-orbit);
+  height: var(--moon-orbit);
+  border-color: #87ceeb transparent transparent transparent;
+  animation: orbit 10s linear infinite;
+  text-align: right;
+  z-index: 8;
+  position: relative;
+}
+
+.moon::before {
+  background: gray;
+  width: var(--moon-diameter);
+  height: var(--moon-diameter);
+  top: calc(var(--moon-orbit) * 0.108 - var(--moon-diameter) / 2);
+  left: calc(var(--moon-orbit) * 0.8538 - var(--moon-diameter) / 2);
+  box-shadow: 0 0 1rem gainsboro;
+}
+
+.moon:hover::after {
+  content: "moon";
+  color: gainsboro;
+  margin-top: -1.5rem;
+  margin-right: 0.35rem;
+}
+
+
+
 .mars {
   top: calc(var(--mars-orbit) / -2 - var(--sun-diameter) / -2);
   left: calc(var(--mars-orbit) / -2 - var(--sun-diameter) / -2);
@@ -190,20 +217,67 @@
   box-shadow: 0 0 3rem rgb(118 40 40 / 0.2) inset, 0 0 3rem rgb(118 40 40 / 0.2);
   border-radius: 50%;
   z-index: 6;
-  display: flex;
-  justify-content: center;
-}
-
-.asteroid-belt:hover::after {
-  content: "asteroid belt";
-  font-size: 20px;
-  color: brown;
-  display: flex;
+  display: block;
+  position: absolute;
 }
 
 .rock {
-  background: brown;
+  position: absolute;
+  background: #040301;
   border-radius: 50%;
+  box-shadow: 0 1px 3px rgb(118 40 40 / 0.5);
+}
+
+.tiny-rock {
+  width: 1px;
+  height: 1px;
+  background: #b1dae7;
+  z-index: -10;
+  box-shadow: 0 0 1px white;
+  animation: pulse-distant 1s linear infinite;
+}
+
+.small-rock {
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+.medium-rock {
+  width: 0.27rem;
+  height: 0.28rem;
+}
+
+.big-rock {
+  width: 0.35rem;
+  height: 0.35rem;
+}
+
+.tiny-rocks {
+  width: 100%;
+  height: 100%;
+  animation: orbit 150s linear infinite;
+  position: absolute;
+}
+
+.small-rocks {
+  width: 100%;
+  height: 100%;
+  animation: orbit 12s linear infinite;
+  position: absolute;
+}
+
+.medium-rocks {
+  width: 100%;
+  height: 100%;
+  animation: orbit 24s linear infinite;
+  position: absolute;
+}
+
+.big-rocks {
+  width: 100%;
+  height: 100%;
+  animation: orbit 60s linear infinite;
+  position: absolute;
 }
 
 @keyframes orbit {
@@ -227,5 +301,19 @@
 
   100% {
     box-shadow: 0 0 3rem orange;
+  }
+}
+
+@keyframes pulse-distant {
+  0% {
+    box-shadow: 0 0 2px white;
+  }
+
+  50% {
+    box-shadow: 1px 1px 4px white;
+  }
+
+  100% {
+    box-shadow: 0 0 2px white;
   }
 }
