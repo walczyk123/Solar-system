@@ -17,6 +17,22 @@
   --phobos-orbit: 1.5rem;
   --jupiter-diameter: 2rem;
   --jupiter-orbit: 30rem;
+  --saturn-diameter: 2rem;
+  --saturn-orbit: 38rem;
+  --disc-height: 0.75rem;
+  --uranus-diameter: 1rem;
+  --uranus-orbit: 45rem;
+  --neptune-diameter: 1rem;
+  --neptune-orbit: 50rem;
+  --pluto-diameter: 0.5rem;
+  --pluto-orbit: 55rem;
+  --haumea-diameter: 0.5rem;
+  --haumea-orbit: 56rem;
+  --makemake-diameter: 0.5rem;
+  --makemake-orbit: 57rem;
+  --eris-diameter: 0.5rem;
+  --eris-orbit: 58rem;
+  --kuiper-belt-orbit: 55rem;
 }
 
 html * {
@@ -107,6 +123,7 @@ html * {
 }
 
 .venus {
+  transform: rotate(145deg);
   top: calc(var(--venus-orbit) / -2 - var(--sun-diameter) / -2);
   left: calc(var(--venus-orbit) / -2 - var(--sun-diameter) / -2);
   width: var(--venus-orbit);
@@ -131,6 +148,7 @@ html * {
 }
 
 .earth {
+  transform: rotate(225deg);
   top: calc(var(--earth-orbit) / -2 - var(--sun-diameter) / -2);
   left: calc(var(--earth-orbit) / -2 - var(--sun-diameter) / -2);
   width: var(--earth-orbit);
@@ -186,6 +204,7 @@ html * {
 }
 
 .mars {
+  transform: rotate(115deg);
   top: calc(var(--mars-orbit) / -2 - var(--sun-diameter) / -2);
   left: calc(var(--mars-orbit) / -2 - var(--sun-diameter) / -2);
   width: var(--mars-orbit);
@@ -213,6 +232,7 @@ html * {
 }
 
 .phobos{
+  transform: rotate(15deg);
   top: calc(var(--mars-orbit) * 0.108 - var(--phobos-orbit) / 2 + var(--mars-diameter) /2.5);
   left: calc(var(--mars-orbit) * 0.8538 - var(--phobos-orbit) /2 - var(--mars-diameter)/8);
   width: var(--phobos-orbit);
@@ -241,6 +261,7 @@ html * {
 }
 
 .deimos{
+  transform: rotate(75deg);
   top: calc(var(--mars-orbit) * -0.105 + var(--deimos-orbit)/2 + var(--phobos-orbit)/2);
   left: calc(var(--mars-orbit) * 0.8538 - var(--deimos-orbit) /2);
   width: var(--deimos-orbit);
@@ -342,8 +363,9 @@ html * {
 }
 
 .jupiter {
-  top: calc(var(--jupiter-orbit) / -2 - var(--jupiter-diameter) / -2);
-  left: calc(var(--jupiter-orbit) / -2 - var(--jupiter-diameter) / -2);
+  transform: rotate(75deg);
+  top: calc(var(--jupiter-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--jupiter-orbit) / -2 - var(--sun-diameter) / -2);
   width: var(--jupiter-orbit);
   height: var(--jupiter-orbit);
   border-color: rgb(165,145,134) transparent white white;
@@ -368,6 +390,251 @@ html * {
   color: rgb(165,145,134);
   margin-top: 0;
   margin-right: 0.35rem;
+}
+
+.saturn {
+  transform: rotate(35deg);
+  top: calc(var(--saturn-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--saturn-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--saturn-orbit);
+  height: var(--saturn-orbit);
+  border-color: rgb(165,145,134) transparent white white;
+  animation: orbit 30s linear infinite;
+  text-align: right;
+  filter: blur(1px);
+  z-index: 5;
+}
+
+.saturn-planet {
+  border-radius: 50%;
+  background: linear-gradient(0deg,  rgba(216,190,167,1) 0%, rgba(216,202,157,1) 25%, rgba(235,243,246,1) 29%, rgba(216,202,157,1) 66%,  rgba(216,202,157,1) 54%, rgba(227,220,203,1) 72%, rgba(165,145,134,1) 97%);
+  width: var(--saturn-diameter);
+  height: var(--saturn-diameter);
+  top: calc(var(--saturn-orbit) * 0.108);
+  left: calc(var(--saturn-orbit) * 0.8538 - var(--saturn-diameter) / 2);
+  box-shadow: 0 0 0.25rem #b48b61;
+  position: relative;
+  display: block;
+}
+
+.saturn:hover::after {
+  content: "saturn";
+  color: rgb(165,145,134);
+  margin-top: 0;
+  margin-right: 0.35rem;
+}
+
+.disc {
+  position: relative;
+  top: calc(var(--saturn-diameter)/2 - var(--disc-height)/2);
+  left: calc(var(--saturn-diameter)/-1.5 );
+  width: 4rem;
+  height: var(--disc-height);
+  border-radius: 50%;
+  border-width: 0.25rem;
+  border-color: rgb(165,145,134) transparent transparent transparent;
+  border-style: solid;
+  z-index: 5;
+}
+
+.disc-bottom {
+  top: calc(var(--saturn-diameter)/-1 + var(--disc-height));
+  transform: rotate(180deg);
+  z-index: -1 !important;
+}
+
+.uranus {
+  top: calc(var(--uranus-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--uranus-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--uranus-orbit);
+  height: var(--uranus-orbit);
+  border-color: rgb(138, 184, 206) transparent transparent transparent;
+  animation: orbit 67s linear infinite;
+  text-align: right;
+  filter: blur(1px);
+  z-index: 4;
+}
+
+.uranus::before {
+  background: rgb(138, 184, 206);
+  width: var(--uranus-diameter);
+  height: var(--uranus-diameter);
+  top: calc(var(--uranus-orbit) * 0.132);
+  left: calc(var(--uranus-orbit) * 0.8538 - var(--uranus-diameter) / 2);
+  box-shadow: 0 0 0.25rem #529bfa;
+}
+
+.uranus:hover::after {
+  filter: none;
+  content: "uranus";
+  color: rgb(138, 184, 206);
+  margin-top: calc(var(--uranus-orbit)*0.05);
+  margin-right: calc(var(--uranus-orbit)*0.05);
+}
+
+.neptune {
+  transform: rotate(250deg);
+  top: calc(var(--neptune-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--neptune-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--neptune-orbit);
+  height: var(--neptune-orbit);
+  border-color: #212354 transparent white white;
+  animation: orbit 77s linear infinite;
+  text-align: right;
+  z-index: 3;
+}
+
+.neptune::before {
+  background: linear-gradient(90deg, #212354 0%, #3E54E8 18%, #3E66F9 41%, #3E54E8 75%, #212354 97%);
+  width: var(--neptune-diameter);
+  height: var(--neptune-diameter);
+  top: calc(var(--neptune-orbit) * 0.132);
+  left: calc(var(--neptune-orbit) * 0.8538 - var(--neptune-diameter) / 2);
+  box-shadow: 0 0 0.15rem #3885f7;
+}
+
+.neptune:hover::after {
+  content: "neptune";
+  color: #3885f7;
+  margin-top: calc(var(--neptune-orbit)*0.05);
+  margin-right: calc(var(--neptune-orbit)*0.05);
+}
+
+.pluto {
+  transform: rotate(15deg);
+  top: calc(var(--pluto-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--pluto-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--pluto-orbit);
+  height: var(--pluto-orbit);
+  border-color: rgb(235, 202, 184, 15%) transparent white white;
+  animation: orbit 47s linear infinite;
+  text-align: right;
+  z-index: 2;
+}
+
+.pluto::before {
+  background: rgb(235, 202, 184);
+  width: var(--pluto-diameter);
+  height: var(--pluto-diameter);
+  top: calc(var(--pluto-orbit) * 0.14);
+  left: calc(var(--pluto-orbit) * 0.8538 - var(--pluto-diameter) / 2);
+}
+
+.pluto:hover::after {
+  content: "pluto";
+  color: rgb(175, 174, 173);
+  margin-top: calc(var(--pluto-orbit)*0.05);
+  margin-right: calc(var(--pluto-orbit)*0.05);
+}
+
+.haumea {
+  transform: rotate(65deg);
+  top: calc(var(--haumea-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--haumea-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--haumea-orbit);
+  height: var(--haumea-orbit);
+  border-color: rgb(165,145,134, 15%) transparent white white;
+  animation: orbit 57s linear infinite;
+  text-align: right;
+  z-index: 1;
+}
+
+.haumea::before {
+  background: rgb(175, 174, 173);
+  width: var(--haumea-diameter);
+  height: var(--haumea-diameter);
+  top: calc(var(--haumea-orbit) * 0.14);
+  left: calc(var(--haumea-orbit) * 0.8538 - var(--haumea-diameter) / 2);
+}
+
+.haumea:hover::after {
+  content: "haumea";
+  color: rgb(175, 174, 173);
+  margin-top: calc(var(--haumea-orbit)*0.05);
+  margin-right: calc(var(--haumea-orbit)*0.05);
+}
+
+.makemake {
+  transform: rotate(115deg);
+  top: calc(var(--makemake-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--makemake-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--makemake-orbit);
+  height: var(--makemake-orbit);
+  border-color: rgb(216, 208, 203, 15%) transparent white white;
+  animation: orbit 55s linear infinite;
+  text-align: right;
+  z-index: 0;
+}
+
+.makemake::before {
+  background: rgb(216, 208, 203);
+  background: linear-gradient(90deg, rgba(165,145,134,1) 0%, rgba(216,202,157,1) 18%, rgba(235,243,246,1) 29%, rgba(216,202,157,1) 41%, rgba(201,144,57,1) 54%, rgba(227,220,203,1) 72%, rgba(165,145,134,1) 97%);
+  width: var(--makemake-diameter);
+  height: var(--makemake-diameter);
+  top: calc(var(--makemake-orbit) * 0.14);
+  left: calc(var(--makemake-orbit) * 0.8538 - var(--makemake-diameter) / 2);
+}
+
+.makemake:hover::after {
+  content: "makemake";
+  color: rgb(216, 208, 203);
+  margin-top: calc(var(--makemake-orbit)*0.05);
+  margin-right: calc(var(--makemake-orbit)*0.05);
+}
+
+.eris {
+  transform: rotate(255deg);
+  top: calc(var(--eris-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--eris-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--eris-orbit);
+  height: var(--eris-orbit);
+  border-color: rgb(230, 215, 207, 15%) transparent white white;
+  animation: orbit 61s linear infinite;
+  text-align: right;
+  filter: blur(1px);
+  z-index: -1;
+}
+
+.eris::before {
+  background: rgb(230, 215, 207);
+  width: var(--eris-diameter);
+  height: var(--eris-diameter);
+  top: calc(var(--eris-orbit) * 0.14);
+  left: calc(var(--eris-orbit) * 0.8538 - var(--eris-diameter) / 2);
+}
+
+.eris:hover::after {
+  content: "eris";
+  color: rgb(165,145,134);
+  margin-top: calc(var(--eris-orbit)*0.05);
+  margin-right: calc(var(--eris-orbit)*0.05);
+}
+
+.kuiper-belt {
+  position: relative;
+  top: calc(var(--kuiper-belt-orbit) / -2 - var(--sun-diameter) / -2);
+  left: calc(var(--kuiper-belt-orbit) / -2 - var(--sun-diameter) / -2);
+  width: var(--kuiper-belt-orbit);
+  height: var(--kuiper-belt-orbit);
+  box-shadow: 0 0 3rem rgba(83, 66, 66, 0.2) inset, 0 0 3rem rgba(112, 88, 88, 0.2);
+  border-radius: 50%;
+  z-index: -3 ;
+  display: block;
+  position: absolute;
+}
+
+.small-kuiper-rocks {
+  width: 100%;
+  height: 100%;
+  animation: orbit 70s linear infinite;
+  position: absolute;
+}
+
+.medium-kuiper-rocks {
+  width: 100%;
+  height: 100%;
+  animation: orbit 120s linear infinite;
+  position: absolute;
 }
 
 @keyframes orbit {
